@@ -1,4 +1,4 @@
-using HowToVersionApi.Contracts.V2023_11_22;
+using HowToVersionApi.Contracts.V20231122;
 
 namespace HowToVersionApi.Controllers.V2023_11_22;
 

@@ -15,7 +15,7 @@ public class WeatherForecastIntegrationTests(WebServerFixture<Program> fixture)
 
         // act
         var response = await client.GetAsync($"/weatherforecast?api-version=2023-11-21");
-        var forecasts = await response.Content.ReadFromJsonAsync<Contracts.V2023_11_21.WeatherForecast[]>();
+        var forecasts = await response.Content.ReadFromJsonAsync<Contracts.V20231121.WeatherForecast[]>();
 
         // assert
         response.StatusCode.Should().Be(HttpStatusCode.OK);

@@ -1,6 +1,6 @@
-using HowToVersionApi.Contracts.V2023_11_20;
-using HowToVersionApi.Contracts.V2023_11_21;
-using HowToVersionApi.Contracts.V2023_11_22;
+using HowToVersionApi.Contracts.V20231120;
+using HowToVersionApi.Contracts.V20231121;
+using HowToVersionApi.Contracts.V20231122;
 
 namespace HowToVersionApi.Controllers.V2023_11_20;
 
@@ -22,11 +22,11 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
 
     [MapToApiVersion(V20231120.ApiVersion)]
     [HttpGet(Name = "GetWeatherForecast20")]
-    public IEnumerable<Contracts.V2023_11_20.WeatherForecast> GetWeather()
+    public IEnumerable<Contracts.V20231120.WeatherForecast> GetWeather()
     {
         logger.LogInformation($"Invoking weather forecast for version {V20231120.ApiVersion}");
 
-        return Enumerable.Range(1, 5).Select(index => new Contracts.V2023_11_20.WeatherForecast
+        return Enumerable.Range(1, 5).Select(index => new Contracts.V20231120.WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),

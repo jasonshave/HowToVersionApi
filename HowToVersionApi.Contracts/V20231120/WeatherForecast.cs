@@ -1,4 +1,4 @@
-namespace HowToVersionApi.Contracts.V2023_11_20
+namespace HowToVersionApi.Contracts.V20231120
 {
     public class WeatherForecast
     {

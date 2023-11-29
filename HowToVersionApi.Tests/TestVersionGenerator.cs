@@ -6,7 +6,7 @@ public class TestVersionGenerator : IEnumerable<object[]>
 {
     private readonly List<object[]> _versions = new()
     {
-        new object[] { "2023-11-20" },
+        new object[] { $"2023-11-20" },
         new object[] { "2023-11-21" },
         new object[] { "2023-11-22" }
     };

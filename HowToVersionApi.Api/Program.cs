@@ -12,7 +12,11 @@ builder.Services.AddApiVersioning(o =>
     o.AssumeDefaultVersionWhenUnspecified = false;
 })
 .AddMvc()
-.AddApiExplorer();
+.AddApiExplorer(v => 
+{
+    v.GroupNameFormat = "'V'yyyy-MM-dd";
+    v.SubstituteApiVersionInUrl = true;
+});
 
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 builder.Services.AddSwaggerGen();

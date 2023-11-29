@@ -1,6 +1,6 @@
 ﻿using HowToVersionApi.Abstractions;
 
-namespace HowToVersionApi.Contracts.V2023_11_21;
+namespace HowToVersionApi.Contracts.V20231121;
 
 public struct V20231121 : IVersion
 {

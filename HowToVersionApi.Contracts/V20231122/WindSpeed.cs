@@ -1,4 +1,4 @@
-﻿namespace HowToVersionApi.Contracts.V2023_11_22;
+﻿namespace HowToVersionApi.Contracts.V20231122;
 
 public class WindSpeed
 {

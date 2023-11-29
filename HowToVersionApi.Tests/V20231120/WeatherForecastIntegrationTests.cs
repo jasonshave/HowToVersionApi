@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using System.Net;
 using System.Net.Http.Json;
 using FluentAssertions;
@@ -33,7 +32,7 @@ public class WeatherForecastIntegrationTests(WebServerFixture<Program> fixture)
 
         // act
         var response = await client.GetAsync($"/weatherforecast?api-version=2023-11-20");
-        var forecasts = await response.Content.ReadFromJsonAsync<Contracts.V2023_11_20.WeatherForecast[]>();
+        var forecasts = await response.Content.ReadFromJsonAsync<Contracts.V20231120.WeatherForecast[]>();
 
         // assert
         response.StatusCode.Should().Be(HttpStatusCode.OK);
