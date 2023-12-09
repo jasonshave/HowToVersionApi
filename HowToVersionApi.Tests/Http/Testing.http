@@ -1,5 +1,11 @@
-
-GET https://localhost:7240/weatherforecast?api-version=2023-11-20
+@hostName = http://localhost:5194
+#@hostName = https://localhost:7240
 
 ###
-GET https://localhost:7240/weatherforecast?api-version=2023-11-21
+GET {{hostName}}/weatherforecast?api-version=2023-11-20
+
+###
+GET {{hostName}}/weatherforecast?api-version=2023-11-22
+
+###
+GET {{hostName}}/weatherSummaries/2?api-version=2023-11-22 
