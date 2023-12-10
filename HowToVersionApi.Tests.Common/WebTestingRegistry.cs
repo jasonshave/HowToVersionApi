@@ -1,6 +1,6 @@
 ﻿namespace HowToVersionApi.Tests.Common;
 
-public class WebTestingFramework : ITestingFramework
+public class WebTestingRegistry : ITestingRegistry
 {
     private readonly HashSet<Type> _testScenarios = new();
 
@@ -8,6 +8,11 @@ public class WebTestingFramework : ITestingFramework
         where TScenario : class, new()
     {
         _testScenarios.Add(typeof(TScenario));
+    }
+
+    public void RegisterScenario(Type scenarioType)
+    {
+        _testScenarios.Add(scenarioType);
     }
 
     public TScenario GetScenario<TScenario>()

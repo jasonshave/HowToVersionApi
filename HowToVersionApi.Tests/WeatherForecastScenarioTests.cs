@@ -2,7 +2,6 @@
 using HowToVersionApi.Contracts.V2023_12_8;
 using HowToVersionApi.Tests.V2023_12_08;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
 namespace HowToVersionApi.Tests;
@@ -10,13 +9,13 @@ namespace HowToVersionApi.Tests;
 public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Program>>
 {
     private readonly WebServerFixture<Program> _fixture;
-    private readonly ILogger<WeatherForecastScenarioTests> _logger;
+    private readonly ITestingRegistry _testRegistry;
 
     public WeatherForecastScenarioTests(ITestOutputHelper testOutputHelper, WebServerFixture<Program> fixture)
     {
         _fixture = fixture;
         _fixture.TestOutputHelper = testOutputHelper;
-        _logger = _fixture.Services.GetRequiredService<ILogger<WeatherForecastScenarioTests>>();
+        _testRegistry = _fixture.Services.GetRequiredService<ITestingRegistry>();
     }
 
     [Fact]
@@ -26,8 +25,8 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_20.GetWeatherTestScenario>();
-        await getWeatherScenario.ProcessAsync(client, _logger);
+        var getWeatherScenario = _testRegistry.GetScenario<V2023_11_20.GetWeatherTestScenario>();
+        await getWeatherScenario.ProcessAsync(client);
     }
 
     [Fact]
@@ -37,8 +36,8 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_21.GetWeatherTestScenario>();
-        await getWeatherScenario.ProcessAsync(client, _logger);
+        var getWeatherScenario = _testRegistry.GetScenario<V2023_11_21.GetWeatherTestScenario>();
+        await getWeatherScenario.ProcessAsync(client);
     }
 
     [Fact]
@@ -48,8 +47,8 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_22.GetWeatherTestScenario>();
-        await getWeatherScenario.ProcessAsync(client, _logger);
+        var getWeatherScenario = _testRegistry.GetScenario<V2023_11_22.GetWeatherTestScenario>();
+        await getWeatherScenario.ProcessAsync(client);
     }
 
     [Fact]
@@ -59,10 +58,10 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_22.GetWeatherSummaryById>();
+        var getWeatherScenario = _testRegistry.GetScenario<V2023_11_22.GetWeatherSummaryByIdScenario>();
         var version = V20231122.ApiVersion;
         getWeatherScenario.Path = string.Format(getWeatherScenario.Path, version);
-        await getWeatherScenario.ProcessAsync(client, _logger);
+        await getWeatherScenario.ProcessAsync(client);
     }
 
     [Theory]
@@ -74,9 +73,9 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_22.GetWeatherSummaryById>();
+        var getWeatherScenario = _testRegistry.GetScenario<V2023_11_22.GetWeatherSummaryByIdScenario>();
         getWeatherScenario.Path = string.Format(getWeatherScenario.Path, version);
-        await getWeatherScenario.ProcessAsync(client, _logger);
+        await getWeatherScenario.ProcessAsync(client);
     }
 
     [Theory]
@@ -88,12 +87,29 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act
-        var scenario = _fixture.TestingFramework.GetScenario<GetGeocodingDataByCity>();
-        scenario.Path = string.Format(scenario.Path, cityName);
-
-        var result = await scenario.ProcessAsync(client, _logger);
+        var scenario = _testRegistry.GetScenario<GetGeocodingDataByCityScenario>();
+        var result = await scenario.ProcessAsync(client, path => string.Format(path, cityName));
 
         // assert
         result.First().Name.Should().Be(cityName);
+    }
+
+    [Fact]
+    public async Task ExecuteScenario_PostOpenWeatherRequest_Validates()
+    {
+        // arrange
+        var client = _fixture.CreateClient();
+        
+        // act
+        var geoScenario = _testRegistry.GetScenario<GetGeocodingDataByCityScenario>();
+        var weatherScenario = _testRegistry.GetScenario<PostOpenWeatherScenario>();
+
+        var geoResult = await geoScenario.ProcessAsync(client, path => string.Format(path, "Edmonton"));
+
+        var request = new GetWeatherByCoordinates(geoResult.First().Lat, geoResult.First().Lon);
+        var result = await weatherScenario.ProcessAsync(request, client);
+
+        // assert
+        result.Name.Should().Be("Edmonton");
     }
 }

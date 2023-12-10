@@ -3,7 +3,7 @@ using HowToVersionApi.Contracts.V2023_12_8;
 
 namespace HowToVersionApi.Tests.V2023_12_08;
 
-public class GetGeocodingDataByCity : TestScenario<GeocodingData[]>
+public class GetGeocodingDataByCityScenario : TestScenario<GeocodingData[]>
 {
     public override HttpMethod HttpMethod { get; } = HttpMethod.Get;
 

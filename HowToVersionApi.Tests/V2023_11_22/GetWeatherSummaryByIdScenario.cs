@@ -1,6 +1,6 @@
 ﻿namespace HowToVersionApi.Tests.V2023_11_22;
 
-public class GetWeatherSummaryById : TestScenario<Dictionary<string, string>>
+public class GetWeatherSummaryByIdScenario : TestScenario<Dictionary<string, string>>
 {
     public override HttpMethod HttpMethod { get; } = HttpMethod.Get;
 

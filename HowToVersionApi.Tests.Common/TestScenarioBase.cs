@@ -6,8 +6,6 @@ public abstract class TestScenarioBase
 
     public abstract string Path { get; set; }
 
-    public virtual HttpContent? RequestContent { get; set; } = null;
-
     public virtual Action<HttpResponseMessage>? HttpResponseValidation { get; } = response =>
     {
         if (!response.IsSuccessStatusCode)
