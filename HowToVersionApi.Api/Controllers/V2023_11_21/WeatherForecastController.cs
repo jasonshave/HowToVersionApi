@@ -10,6 +10,7 @@ public class WeatherForecastController(
     IWeatherService<WeatherForecast> weatherService) : ControllerBase
 {
     [HttpGet(Name = "GetWeatherForecast")]
+    [MapToApiVersion(V20231121.ApiVersion)]
     public IEnumerable<WeatherForecast> GetWeather21()
     {
         var weathers = weatherService.GetWeather();

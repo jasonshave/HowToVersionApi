@@ -17,7 +17,7 @@ public class WebServerFixture<TStartup> : WebApplicationFactory<TStartup>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         TestingFramework = new WebTestingFramework();
-        
+
         TestingFramework.RegisterScenario<V2023_11_20.GetWeatherTestScenario>();
         TestingFramework.RegisterScenario<V2023_11_21.GetWeatherTestScenario>();
         TestingFramework.RegisterScenario<V2023_11_22.GetWeatherTestScenario>();

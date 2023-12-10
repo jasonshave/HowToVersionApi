@@ -9,6 +9,7 @@ namespace HowToVersionApi.Api.Controllers.V2023_11_20;
 public class WeatherForecastController(IWeatherService<WeatherForecast> weatherService) : ControllerBase
 {
     [HttpGet(Name = "GetWeatherForecast")]
+    [MapToApiVersion(V20231120.ApiVersion)]
     public IEnumerable<WeatherForecast> GetWeather20()
     {
         var weathers = weatherService.GetWeather();

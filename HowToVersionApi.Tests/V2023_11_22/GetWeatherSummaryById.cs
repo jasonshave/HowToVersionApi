@@ -1,6 +1,4 @@
-﻿using HowToVersionApi.Contracts.V2023_11_22;
-
-namespace HowToVersionApi.Tests.V2023_11_22;
+﻿namespace HowToVersionApi.Tests.V2023_11_22;
 
 public class GetWeatherSummaryById : TestScenario<Dictionary<string, string>>
 {
@@ -8,7 +6,7 @@ public class GetWeatherSummaryById : TestScenario<Dictionary<string, string>>
 
     public override string Path { get; set; } = "weatherSummaries/2?api-version={0}";
 
-    public override Action<Dictionary<string,string>> DataValidation { get; } = data =>
+    public override Action<Dictionary<string, string>> DataValidation { get; } = data =>
     {
         data.Should().NotBeNullOrEmpty();
         data.Values.Should().Contain("Chilly");

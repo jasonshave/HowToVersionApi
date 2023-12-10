@@ -16,6 +16,7 @@ public class OpenWeatherController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherByCity")]
+    [MapToApiVersion(V20231208.ApiVersion)]
     public async Task<IActionResult> GetOpenWeatherByCity([FromQuery] string city)
     {
         var geocodingData = await _openWeatherService.GetGeocodingAsync(city);

@@ -18,5 +18,5 @@ public class WeatherMain
 
     public double Pressure { get; set; }
 
-    public double Humidity { get; set;}
+    public double Humidity { get; set; }
 }

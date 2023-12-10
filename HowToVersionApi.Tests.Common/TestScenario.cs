@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace HowToVersionApi.Tests.Common;
 
-public abstract class TestScenario : BaseScenario
+public abstract class TestScenario : TestScenarioBase
 {
     public virtual async ValueTask ProcessAsync(HttpClient httpClient, ILogger? logger = null)
     {
@@ -19,17 +19,20 @@ public abstract class TestScenario : BaseScenario
     }
 }
 
-public abstract class TestScenario<TResult> : BaseScenario
+public abstract class TestScenario<TResponse> : TestScenarioBase
 {
     public abstract Action<TResult?>? DataValidation { get; }
 
     private HttpContent? _httpContent;
 
-    public virtual async ValueTask<TResult?> ProcessWithResultAsync(HttpClient httpClient, ILogger? logger = null)
+    public virtual async ValueTask<TResponse?> ProcessAsync(HttpClient httpClient, ILogger? logger = null)
     {
         logger?.LogInformation("Handling scenario {scenario}.", GetType().Name);
 
         var request = new HttpRequestMessage(HttpMethod, Path);
+
+        if (_httpContent is not null) request.Content = _httpContent;
+
         var response = await httpClient.SendAsync(request);
 
         HttpResponseValidation?.Invoke(response);
@@ -41,12 +44,12 @@ public abstract class TestScenario<TResult> : BaseScenario
         return result;
     }
 
-    public virtual async ValueTask<TResult?> ProcessWithRequestAndPayloadAsync<TRequest>(TRequest data, HttpClient httpClient, ILogger? logger = null)
+    public virtual async ValueTask<TResponse?> ProcessAsync<TRequest>(TRequest data, HttpClient httpClient, ILogger? logger = null)
     {
         logger?.LogInformation("Handling scenario {scenario}.", GetType().Name);
-        
+
         _httpContent = JsonContent.Create(data);
-        var result = await ProcessWithResultAsync(httpClient, logger);
+        var result = await ProcessAsync(httpClient, logger);
 
         return result;
     }

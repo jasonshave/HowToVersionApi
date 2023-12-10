@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Components.Endpoints;
 
 namespace HowToVersionApi.Api.OpenWeather.Models;
 
@@ -7,7 +6,7 @@ public class WeatherData
 {
     [JsonPropertyName("coord")]
     public Coordinates Coordinates { get; set; }
-    
+
     public List<Weather>? Weather { get; set; }
 
     public string Base { get; set; }

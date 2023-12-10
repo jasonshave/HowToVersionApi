@@ -10,5 +10,5 @@ public class WeatherSystemData
 
     public int Sunrise { get; set; }
 
-    public int Sunset { get; set;}
+    public int Sunset { get; set; }
 }

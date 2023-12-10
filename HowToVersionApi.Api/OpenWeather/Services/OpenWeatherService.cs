@@ -25,7 +25,7 @@ public class OpenWeatherService : IOpenWeatherService
         var response = await _weatherClient.GetAsync($"?lat={data.Lat}&lon={data.Lon}&units=metric&appid={_openWeatherApiConfiguration.ApiKey}");
         var stringData = await response.Content.ReadAsStringAsync();
         _logger.LogInformation(stringData);
-        
+
         var weatherData = await response.Content.ReadFromJsonAsync<WeatherData>();
         return weatherData;
     }

@@ -15,7 +15,7 @@ public class WeatherSummariesController : ControllerBase
     [Route("{id}")]
     public IActionResult GetSummaryById([FromRoute] int id)
     {
-        var summaries = new [] {"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"};
+        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
         return Ok(new { FeelsLike = summaries[id] });
     }
 }
