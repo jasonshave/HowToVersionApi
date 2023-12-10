@@ -2,13 +2,9 @@
 
 public interface ITestingFramework
 {
-    void RegisterScenario(ITestScenario scenario);
+    void RegisterScenario<TScenario>()
+        where TScenario : class, new();
 
-    ITestScenario GetScenario<TScenario>()
-        where TScenario : ITestScenario;
-
-    ITestScenario GetScenario(Type scenarioType);
-
-    ITestScenario<TResult> GetScenarioWithResult<TScenario, TResult>()
-        where TScenario : ScenarioBase<TResult>;
+    TScenario CreateScenario<TScenario>()
+        where TScenario : class, new();
 }

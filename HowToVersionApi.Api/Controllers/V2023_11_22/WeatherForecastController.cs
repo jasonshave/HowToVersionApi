@@ -10,7 +10,7 @@ namespace HowToVersionApi.Api.Controllers.V2023_11_22;
 public class WeatherForecastController(IMediator mediator) : ControllerBase
 {
     [HttpGet(Name = "GetWeatherForecast")]
-    public async Task<IEnumerable<WeatherForecast>> GetWeather()
+    public async Task<IEnumerable<WeatherForecast>> GetWeather22()
     {
         var weathers = await mediator.Send(new GetWeatherForecast());
 

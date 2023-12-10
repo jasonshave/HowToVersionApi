@@ -1,5 +1,5 @@
 using HowToVersionApi.Api;
-using HowToVersionApi.Api.OpenWeather.Models;
+using HowToVersionApi.Api.OpenWeather;
 using HowToVersionApi.Api.OpenWeather.Services;
 using HowToVersionApi.Contracts.V2023_11_20;
 using HowToVersionApi.Contracts.V2023_11_21;
@@ -30,7 +30,7 @@ builder.Services.AddVersion<V20231120>();
 builder.Services.AddVersion<V20231121>();
 
 builder.Services.AddSingleton<IOpenWeatherService, OpenWeatherService>();
-builder.Services.Configure<OpenWeatherApiConfiguration>(builder.Configuration);
+builder.Services.Configure<OpenWeatherApiConfiguration>(builder.Configuration.GetSection(nameof(OpenWeatherApiConfiguration)));
 
 
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();

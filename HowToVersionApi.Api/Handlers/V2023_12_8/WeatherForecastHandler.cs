@@ -17,7 +17,8 @@ public class WeatherForecastHandler : IRequestHandler<GetWeatherRequest, Weather
     public async Task<WeatherData> Handle(GetWeatherRequest request, CancellationToken cancellationToken)
     {
         var geocodingData = await _openWeatherService.GetGeocodingAsync(request.City);
-        var weatherData = await _openWeatherService.GetWeatherAsync(geocodingData.Lat, geocodingData.Lon);
+
+        var weatherData = await _openWeatherService.GetWeatherAsync(geocodingData.First());
 
         return weatherData;
     }

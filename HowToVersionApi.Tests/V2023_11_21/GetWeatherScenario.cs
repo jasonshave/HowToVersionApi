@@ -2,10 +2,8 @@
 
 namespace HowToVersionApi.Tests.V2023_11_21;
 
-public class GetWeatherScenario : ScenarioBase<WeatherForecast[]>
+public class GetWeatherTestScenario : TestScenario<WeatherForecast[]>
 {
-    public override string Version { get; } = V20231121.Version;
-
     public override HttpMethod HttpMethod => HttpMethod.Get;
 
     public override string Path { get; set; } = V20231121.RequestPath;

@@ -1,3 +1,3 @@
 ﻿namespace HowToVersionApi.Tests.Common;
 
-public record TestScenarioData(ITestScenario TestScenario, string? Version = null);
+public record TestScenarioData(object TestScenario, string? Version = null);

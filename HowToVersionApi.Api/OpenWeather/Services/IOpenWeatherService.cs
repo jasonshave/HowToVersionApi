@@ -4,6 +4,6 @@ namespace HowToVersionApi.Api.OpenWeather.Services;
 
 public interface IOpenWeatherService
 {
-    ValueTask<WeatherData?> GetWeatherAsync(string lat, string lon);
-    ValueTask<GeocodingData?> GetGeocodingAsync(string city);
+    ValueTask<WeatherData?> GetWeatherAsync(GeocodingData data);
+    ValueTask<GeocodingData[]?> GetGeocodingAsync(string city);
 }

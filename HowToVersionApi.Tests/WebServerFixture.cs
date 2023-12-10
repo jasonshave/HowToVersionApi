@@ -17,10 +17,11 @@ public class WebServerFixture<TStartup> : WebApplicationFactory<TStartup>
     {
         TestingFramework = new WebTestingFramework();
         
-        TestingFramework.RegisterScenario(new V2023_11_20.GetWeatherScenario());
-        TestingFramework.RegisterScenario(new V2023_11_21.GetWeatherScenario());
-        TestingFramework.RegisterScenario(new V2023_11_22.GetWeatherScenario());
-        TestingFramework.RegisterScenario(new V2023_11_22.GetWeatherSummaryById());
+        TestingFramework.RegisterScenario<V2023_11_20.GetWeatherTestScenario>();
+        TestingFramework.RegisterScenario<V2023_11_21.GetWeatherTestScenario>();
+        TestingFramework.RegisterScenario<V2023_11_22.GetWeatherTestScenario>();
+        TestingFramework.RegisterScenario<V2023_11_22.GetWeatherSummaryById>();
+        TestingFramework.RegisterScenario<V2023_12_08.GetGeocodingDataByCity>();
 
         builder
             .ConfigureLogging(loggingBuilder =>

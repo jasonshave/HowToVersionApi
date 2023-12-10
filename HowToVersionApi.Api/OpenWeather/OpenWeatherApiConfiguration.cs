@@ -1,4 +1,4 @@
-﻿namespace HowToVersionApi.Api.OpenWeather.Models;
+﻿namespace HowToVersionApi.Api.OpenWeather;
 
 public class OpenWeatherApiConfiguration
 {

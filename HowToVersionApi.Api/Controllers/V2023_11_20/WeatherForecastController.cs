@@ -9,7 +9,7 @@ namespace HowToVersionApi.Api.Controllers.V2023_11_20;
 public class WeatherForecastController(IWeatherService<WeatherForecast> weatherService) : ControllerBase
 {
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public IEnumerable<WeatherForecast> GetWeather20()
     {
         var weathers = weatherService.GetWeather();
 

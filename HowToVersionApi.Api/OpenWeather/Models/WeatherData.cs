@@ -1,14 +1,37 @@
-﻿namespace HowToVersionApi.Api.OpenWeather.Models;
+﻿using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Components.Endpoints;
+
+namespace HowToVersionApi.Api.OpenWeather.Models;
 
 public class WeatherData
 {
-    public double Lat { get; set; }
-    public double Lon { get; set; }
-    public string Timezone { get; set; } = string.Empty;
-    public int TimezoneOffset { get; set; }
-    public CurrentWeather? Current { get; set; }
-    public List<MinutelyForecast>? Minutely { get; set; }
-    public List<HourlyForecast>? Hourly { get; set; }
-    public List<DailyForecast>? Daily { get; set; }
-    public List<Alert>? Alerts { get; set; }
+    [JsonPropertyName("coord")]
+    public Coordinates Coordinates { get; set; }
+    
+    public List<Weather>? Weather { get; set; }
+
+    public string Base { get; set; }
+
+    public WeatherMain Main { get; set; } = new();
+
+    public int Visibility { get; set; }
+
+    public Dictionary<string, double>? Wind { get; set; }
+
+    public Dictionary<string, double>? Rain { get; set; }
+
+    public Dictionary<string, double>? Clouds { get; set; }
+
+    [JsonPropertyName("dt")]
+    public int TimeOfDay { get; set; }
+
+    public WeatherSystemData WeatherSystemData { get; set; }
+
+    public int Timezone { get; set; }
+
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    public int Cod { get; set; }
 }

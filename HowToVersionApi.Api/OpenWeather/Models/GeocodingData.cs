@@ -4,21 +4,18 @@ namespace HowToVersionApi.Api.OpenWeather.Models;
 
 public class GeocodingData
 {
-    [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
 
     [JsonPropertyName("local_names")]
-    public string LocalNames { get; set; } = string.Empty;
+    public Dictionary<string, string>? LocalNames { get; set; } = new();
 
     [JsonPropertyName("lat")]
-    public string Lat { get; set; } = string.Empty;
+    public double Lat { get; set; }
 
     [JsonPropertyName("lon")]
-    public string Lon { get; set; } = string.Empty;
+    public double Lon { get; set; }
 
-    [JsonPropertyName("country")]
-    public string Country { get; set; } = string.Empty;
+    public string? Country { get; set; } = string.Empty;
 
-    [JsonPropertyName("state")]
-    public string State { get; set; } = string.Empty;
+    public string? State { get; set; } = string.Empty;
 }

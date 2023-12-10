@@ -10,7 +10,7 @@ public class WeatherForecastController(
     IWeatherService<WeatherForecast> weatherService) : ControllerBase
 {
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> GetWeather()
+    public IEnumerable<WeatherForecast> GetWeather21()
     {
         var weathers = weatherService.GetWeather();
 
