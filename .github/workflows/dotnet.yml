@@ -24,5 +24,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Unit Tests
       env:
-        WeatherApiConfiguration__ApiKey: ${{ secrets.OPENWEATHERAPICONFIGURATION__APIKEY }}
+        OpenWeatherApiConfiguration__ApiKey: ${{ secrets.OPENWEATHERAPICONFIGURATION__APIKEY }}
       run: dotnet test --no-build --verbosity normal -p:ParallelizeTestCollections=false
