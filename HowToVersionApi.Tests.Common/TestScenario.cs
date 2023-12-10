@@ -19,13 +19,13 @@ public abstract class TestScenario : TestScenarioBase
     }
 }
 
-public abstract class TestScenario<TResponse> : TestScenarioBase
+public abstract class TestScenario<TResult> : TestScenarioBase
 {
     public abstract Action<TResult?>? DataValidation { get; }
 
     private HttpContent? _httpContent;
 
-    public virtual async ValueTask<TResponse?> ProcessAsync(HttpClient httpClient, ILogger? logger = null)
+    public virtual async ValueTask<TResult?> ProcessAsync(HttpClient httpClient, ILogger? logger = null)
     {
         logger?.LogInformation("Handling scenario {scenario}.", GetType().Name);
 
@@ -44,7 +44,7 @@ public abstract class TestScenario<TResponse> : TestScenarioBase
         return result;
     }
 
-    public virtual async ValueTask<TResponse?> ProcessAsync<TRequest>(TRequest data, HttpClient httpClient, ILogger? logger = null)
+    public virtual async ValueTask<TResult?> ProcessAsync<TRequest>(TRequest data, HttpClient httpClient, ILogger? logger = null)
     {
         logger?.LogInformation("Handling scenario {scenario}.", GetType().Name);
 

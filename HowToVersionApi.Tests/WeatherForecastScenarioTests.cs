@@ -37,7 +37,7 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.CreateScenario<V2023_11_21.GetWeatherTestScenario>();
+        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_21.GetWeatherTestScenario>();
         await getWeatherScenario.ProcessAsync(client, _logger);
     }
 
@@ -48,7 +48,7 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.CreateScenario<V2023_11_22.GetWeatherTestScenario>();
+        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_22.GetWeatherTestScenario>();
         await getWeatherScenario.ProcessAsync(client, _logger);
     }
 
