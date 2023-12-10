@@ -19,13 +19,13 @@ public abstract class TestScenario : BaseScenario
     }
 }
 
-public abstract class TestScenario<TResponse> : BaseScenario
+public abstract class TestScenario<TResult> : BaseScenario
 {
-    public abstract Action<TResponse?>? DataValidation { get; }
+    public abstract Action<TResult?>? DataValidation { get; }
 
     private HttpContent? _httpContent;
 
-    public virtual async ValueTask<TResponse?> ProcessWithResultAsync(HttpClient httpClient, ILogger? logger = null)
+    public virtual async ValueTask<TResult?> ProcessWithResultAsync(HttpClient httpClient, ILogger? logger = null)
     {
         logger?.LogInformation("Handling scenario {scenario}.", GetType().Name);
 
@@ -34,14 +34,14 @@ public abstract class TestScenario<TResponse> : BaseScenario
 
         HttpResponseValidation?.Invoke(response);
 
-        var result = await response.Content.ReadFromJsonAsync<TResponse>();
+        var result = await response.Content.ReadFromJsonAsync<TResult>();
 
         DataValidation?.Invoke(result);
 
         return result;
     }
 
-    public virtual async ValueTask<TResponse?> ProcessWithRequestAndPayloadAsync<TRequest>(TRequest data, HttpClient httpClient, ILogger? logger = null)
+    public virtual async ValueTask<TResult?> ProcessWithRequestAndPayloadAsync<TRequest>(TRequest data, HttpClient httpClient, ILogger? logger = null)
     {
         logger?.LogInformation("Handling scenario {scenario}.", GetType().Name);
         

@@ -20,6 +20,7 @@ public class OpenWeatherController : ControllerBase
     {
         var geocodingData = await _openWeatherService.GetGeocodingAsync(city);
         var openWeather = await _openWeatherService.GetWeatherAsync(geocodingData.First());
-        return Ok(openWeather);
+
+        return openWeather is null ? NotFound() : Ok(openWeather);
     }
 }

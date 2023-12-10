@@ -1,4 +1,5 @@
 ﻿using HowToVersionApi.Contracts.V2023_11_20;
+using HowToVersionApi.Tests.Common;
 
 namespace HowToVersionApi.Tests.V2023_11_20;
 

@@ -27,7 +27,7 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.CreateScenario<V2023_11_20.GetWeatherTestScenario>();
+        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_20.GetWeatherTestScenario>();
         await getWeatherScenario.ProcessAsync(client, _logger);
     }
 
@@ -38,7 +38,7 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.CreateScenario<V2023_11_21.GetWeatherTestScenario>();
+        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_21.GetWeatherTestScenario>();
         await getWeatherScenario.ProcessWithResultAsync(client, _logger);
     }
 
@@ -49,7 +49,7 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.CreateScenario<V2023_11_22.GetWeatherTestScenario>();
+        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_22.GetWeatherTestScenario>();
         await getWeatherScenario.ProcessWithResultAsync(client, _logger);
     }
 
@@ -60,7 +60,7 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.CreateScenario<V2023_11_22.GetWeatherSummaryById>();
+        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_22.GetWeatherSummaryById>();
         var version = V20231122.ApiVersion;
         getWeatherScenario.Path = string.Format(getWeatherScenario.Path, version);
         await getWeatherScenario.ProcessWithResultAsync(client, _logger);
@@ -75,7 +75,7 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
         var client = _fixture.CreateClient();
 
         // act + assert
-        var getWeatherScenario = _fixture.TestingFramework.CreateScenario<V2023_11_22.GetWeatherSummaryById>();
+        var getWeatherScenario = _fixture.TestingFramework.GetScenario<V2023_11_22.GetWeatherSummaryById>();
         getWeatherScenario.Path = string.Format(getWeatherScenario.Path, version);
         await getWeatherScenario.ProcessWithResultAsync(client, _logger);
     }
@@ -83,13 +83,13 @@ public class WeatherForecastScenarioTests : IClassFixture<WebServerFixture<Progr
     [Theory]
     [InlineData("Edmonton")]
     [InlineData("Calgary")]
-    public async Task Execute_GetOpenWeatherScenario_ReturnsValidWeather(string cityName)
+    public async Task ExecuteScenario_GetGeocodingDataByCityScenario_ReturnsValidWeather(string cityName)
     {
         // arrange
         var client = _fixture.CreateClient();
         
         // act
-        var scenario = _fixture.TestingFramework.CreateScenario<GetGeocodingDataByCity>();
+        var scenario = _fixture.TestingFramework.GetScenario<GetGeocodingDataByCity>();
         scenario.Path = string.Format(scenario.Path, cityName);
 
         var result = await scenario.ProcessWithResultAsync(client, _logger);

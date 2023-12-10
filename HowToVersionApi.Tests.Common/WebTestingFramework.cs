@@ -10,7 +10,7 @@ public class WebTestingFramework : ITestingFramework
         _testScenarios.Add(typeof(TScenario));
     }
 
-    public TScenario CreateScenario<TScenario>()
+    public TScenario GetScenario<TScenario>()
         where TScenario : class, new()
     {
         _testScenarios.TryGetValue(typeof(TScenario), out var scenarioType);

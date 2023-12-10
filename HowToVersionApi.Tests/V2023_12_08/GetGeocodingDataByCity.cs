@@ -7,13 +7,10 @@ public class GetGeocodingDataByCity : TestScenario<GeocodingData[]>
 {
     public override HttpMethod HttpMethod { get; } = HttpMethod.Get;
 
-    public override string Path { get; set; } = V20231208.GeocodingApiPath + "?city={0}&api-version=" + V20231208.Version;
-
-    public override HttpContent? RequestContent { get; set; }
+    public override string Path { get; set; } = V20231208.GeocodingApiPath + "?city={0}&api-version=" + V20231208.ApiVersion;
 
     public override Action<GeocodingData[]?>? DataValidation { get; } = data =>
     {
-        data.Should().NotBeNull();
-        data.Should().NotBeEmpty();
+        data.Should().NotBeNullOrEmpty();
     };
 }

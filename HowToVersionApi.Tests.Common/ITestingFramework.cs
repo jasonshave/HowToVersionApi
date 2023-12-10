@@ -5,6 +5,6 @@ public interface ITestingFramework
     void RegisterScenario<TScenario>()
         where TScenario : class, new();
 
-    TScenario CreateScenario<TScenario>()
+    TScenario GetScenario<TScenario>()
         where TScenario : class, new();
 }
