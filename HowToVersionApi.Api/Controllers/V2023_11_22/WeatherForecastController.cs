@@ -1,22 +1,23 @@
+using HowToVersionApi.Api.Requests.V2023_11_22;
 using HowToVersionApi.Contracts.V2023_11_22;
+using HowToVersionApi.Contracts.V2023_12_8;
+using MediatR;
 
-namespace HowToVersionApi.Controllers.V2023_11_22;
+namespace HowToVersionApi.Api.Controllers.V2023_11_22;
 
 [ApiController]
 [ApiVersion(V20231122.ApiVersion)]
+[ApiVersion(V20231208.ApiVersion)]
 [Route("[controller]")]
-public class WeatherForecastController(ILogger<WeatherForecastController> logger) : ControllerBase
+public class WeatherForecastController(IMediator mediator) : ControllerBase
 {
     [MapToApiVersion(V20231122.ApiVersion)]
-    [HttpGet(Name = "GetWindSpeed")]
-    [Route("/windspeed")]
-    public WindSpeed GetWindSpeed()
+    [MapToApiVersion(V20231208.ApiVersion)]
+    [HttpGet(Name = "GetWeatherForecast")]
+    public async Task<IEnumerable<WeatherForecast>> GetWeather22()
     {
-        logger.LogInformation($"Invoking weather forecast for version {V20231122.ApiVersion}");
+        var weathers = await mediator.Send(new GetWeatherForecast());
 
-        return new WindSpeed()
-        {
-            SpeedInMph = 11
-        };
+        return weathers;
     }
 }

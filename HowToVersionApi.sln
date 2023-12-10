@@ -3,21 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToVersionApi.Abstractions", "HowToVersionApi.Abstractions\HowToVersionApi.Abstractions.csproj", "{DE303168-BAB5-4654-8411-393D22ADA9E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToVersionApi.Abstractions", "HowToVersionApi.Abstractions\HowToVersionApi.Abstractions.csproj", "{DE303168-BAB5-4654-8411-393D22ADA9E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToVersionApi.Api", "HowToVersionApi.Api\HowToVersionApi.Api.csproj", "{AEBEB6FE-6941-4E61-9875-BA0C4A4930AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToVersionApi.Api", "HowToVersionApi.Api\HowToVersionApi.Api.csproj", "{AEBEB6FE-6941-4E61-9875-BA0C4A4930AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToVersionApi.Contracts", "HowToVersionApi.Contracts\HowToVersionApi.Contracts.csproj", "{EE9584C8-3660-44FE-A4F8-5DBC7653A097}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToVersionApi.Contracts", "HowToVersionApi.Contracts\HowToVersionApi.Contracts.csproj", "{EE9584C8-3660-44FE-A4F8-5DBC7653A097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToVersionApi.Tests", "HowToVersionApi.Tests\HowToVersionApi.Tests.csproj", "{2EB8DFFC-D853-466D-A265-075B03D068F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToVersionApi.Tests", "HowToVersionApi.Tests\HowToVersionApi.Tests.csproj", "{2EB8DFFC-D853-466D-A265-075B03D068F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowToVersionApi.Domain", "HowToVersionApi.Domain\HowToVersionApi.Domain.csproj", "{86B67FBF-A4BC-4FF6-ADFA-CF66FB3C644D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BD0597BF-A731-42E8-961D-37FAC1E74BB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HowToVersionApi.Tests.Common", "HowToVersionApi.Tests.Common\HowToVersionApi.Tests.Common.csproj", "{383A0BEC-EB28-40DE-AD99-FF2DFAE0D662}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DE303168-BAB5-4654-8411-393D22ADA9E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +39,23 @@ Global
 		{2EB8DFFC-D853-466D-A265-075B03D068F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EB8DFFC-D853-466D-A265-075B03D068F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EB8DFFC-D853-466D-A265-075B03D068F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B67FBF-A4BC-4FF6-ADFA-CF66FB3C644D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B67FBF-A4BC-4FF6-ADFA-CF66FB3C644D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B67FBF-A4BC-4FF6-ADFA-CF66FB3C644D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B67FBF-A4BC-4FF6-ADFA-CF66FB3C644D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{383A0BEC-EB28-40DE-AD99-FF2DFAE0D662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{383A0BEC-EB28-40DE-AD99-FF2DFAE0D662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{383A0BEC-EB28-40DE-AD99-FF2DFAE0D662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{383A0BEC-EB28-40DE-AD99-FF2DFAE0D662}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2EB8DFFC-D853-466D-A265-075B03D068F7} = {BD0597BF-A731-42E8-961D-37FAC1E74BB6}
+		{383A0BEC-EB28-40DE-AD99-FF2DFAE0D662} = {BD0597BF-A731-42E8-961D-37FAC1E74BB6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {021BE4EB-D056-49BD-B673-A7EAB39BC70A}
 	EndGlobalSection
 EndGlobal

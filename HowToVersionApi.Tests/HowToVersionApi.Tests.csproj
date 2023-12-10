@@ -27,5 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HowToVersionApi.Api\HowToVersionApi.Api.csproj" />
+    <ProjectReference Include="..\HowToVersionApi.Contracts\HowToVersionApi.Contracts.csproj" />
+    <ProjectReference Include="..\HowToVersionApi.Tests.Common\HowToVersionApi.Tests.Common.csproj" />
   </ItemGroup>
 </Project>

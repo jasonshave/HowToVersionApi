@@ -1,0 +1,14 @@
+@hostName = http://localhost:5194
+#@hostName = https://localhost:7240
+
+###
+GET {{hostName}}/weatherforecast?api-version=2023-11-20
+
+###
+GET {{hostName}}/weatherforecast?api-version=2023-11-22
+
+###
+GET {{hostName}}/weatherSummaries/1?api-version=2023-11-22
+
+###
+GET {{hostName}}/geocoding?city=Calgary&api-version=2023-12-08
