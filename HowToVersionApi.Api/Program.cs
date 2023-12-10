@@ -23,7 +23,9 @@ builder.Services.AddApiVersioning(o =>
     v.SubstituteApiVersionInUrl = true;
 });
 
-builder.Configuration.AddUserSecrets<Program>();
+builder.Configuration
+    .AddEnvironmentVariables()
+    .AddUserSecrets<Program>();
 builder.Services.AddHttpClient();
 
 builder.Services.AddVersion<V20231120>();
