@@ -16,7 +16,10 @@ public class WebServerFixture<TStartup> : WebApplicationFactory<TStartup>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder
-            .ConfigureTestServices(services => services.AddWebTestingFramework(Assembly.GetExecutingAssembly()))
+            .ConfigureTestServices(services => 
+            {
+                services.AddWebTestingFramework(Assembly.GetExecutingAssembly());
+            })
             .ConfigureLogging(loggingBuilder =>
             {
                 loggingBuilder.Services.AddSingleton<ILoggerProvider>(_ => new XUnitLoggerProvider(TestOutputHelper));

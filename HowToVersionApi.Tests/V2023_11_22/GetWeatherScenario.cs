@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-using HowToVersionApi.Contracts.V2023_11_22;
-using HowToVersionApi.Tests.Common;
+﻿using HowToVersionApi.Contracts.V2023_11_22;
 
 namespace HowToVersionApi.Tests.V2023_11_22;
 

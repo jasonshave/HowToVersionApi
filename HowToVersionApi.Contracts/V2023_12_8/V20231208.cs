@@ -1,6 +1,4 @@
-﻿using HowToVersionApi.Abstractions;
-
-namespace HowToVersionApi.Contracts.V2023_12_8;
+﻿namespace HowToVersionApi.Contracts.V2023_12_8;
 
 public struct V20231208
 {

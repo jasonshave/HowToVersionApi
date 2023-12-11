@@ -1,4 +1,6 @@
-﻿namespace HowToVersionApi.Tests.Common;
+﻿using System.Net.Http.Headers;
+
+namespace HowToVersionApi.Tests.Common;
 
 public abstract class TestScenarioBase
 {
@@ -6,11 +8,15 @@ public abstract class TestScenarioBase
 
     public abstract string Path { get; set; }
 
-    public virtual Action<HttpResponseMessage>? HttpResponseValidation { get; } = response =>
+    public virtual Action<HttpRequestMessage>? HttpRequestMessage => null;
+
+    public virtual Action<HttpResponseMessage>? HttpResponseValidation => response =>
     {
         if (!response.IsSuccessStatusCode)
         {
             throw new Exception($"Unexpected status code {response.StatusCode}");
         }
     };
+    
+    public virtual Action<HttpResponseHeaders>? HttpResponseHeadersValidation => null;
 }
